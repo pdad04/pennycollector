@@ -1,0 +1,11 @@
+{
+  "name": "penny-collector",
+  "version": "1.0.0",
+  "description": "Backend for penny collector site which will allow users to add/view Souvenir penny machine locations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andre Dean",
+  "license": "ISC"
+}
