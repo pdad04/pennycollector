@@ -54,7 +54,6 @@ router.post("/create", async(req, res) => {
   // Add new location to DB.
   try {
     const newLocation = await db.getDb().db("locations").collection(state).insertOne(createLocation);
-    console.log(newLocation);
     res.status(200).json({msg: "Location created!"});
 
   } catch (error) {
@@ -67,8 +66,7 @@ router.post("/create", async(req, res) => {
 router.patch("/update/:state/:id", async(req, res) => {
   const collection = req.params.state;
   const locationToUpdate = {_id: ObjectId(req.params.id)}
-  console.log(req.body);
-  
+
   const updateDocument = {
     $set: req.body
   };
