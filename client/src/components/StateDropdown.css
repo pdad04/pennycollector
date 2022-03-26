@@ -1,0 +1,40 @@
+#dropdown-select {
+  text-align: center;
+  cursor: default;
+  border: 1px solid black;
+  padding: 0.25rem;
+  overflow: scroll;
+}
+
+.dropdown {
+  height: 1rem;
+  width: max-content;
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+.dropdown-list-hide {
+  opacity: 0;
+}
+
+.dropdown-list-show {
+  position: relative;
+  cursor: default;
+  width: 100%;
+  height: 15rem;
+  margin-top: 2px;
+  background-color: hsl(0, 50%, 98%);
+  overflow: scroll;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  z-index: 100;
+}
+
+.dropdown-list__state {
+  padding-bottom: 2px;
+  text-align: center;
+}
+
+.dropdown-list__state:hover {
+  background-color: hsla(0, 0%, 0%, 0.75);
+  color: hsl(0, 0%, 100%);
+}
