@@ -2,12 +2,12 @@ import React, {Fragment, useState} from 'react'
 import StateDropdown from './StateDropdown';
 import pennyMachineImg from "../images/Penny-Press-Machine.png";
 
-const Home = () => {
-  const [stateName, setStateName] = useState("");
+const Home = ({stateName,updateStateName}) => {
+  // const [stateName, setStateName] = useState(null);
 
-  const updateStateName = (e) => {
-    setStateName(e.target.dataset.state);
-  }
+  // const updateStateName = (e) => {
+  //   setStateName(e.target.dataset.state);
+  // }
 
   return (
     <>

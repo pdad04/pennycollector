@@ -30,14 +30,14 @@ const StateDropdown = ({updateStateName, state}) => {
         <div onClick={showStates} id="dropdown-select__initial">{state || "Select State"} <IoMdArrowDropdown /></div>
       </div>
       <div className={`dropdown-list-${showList}`}>
-        {states.map( (state,idx) => 
+        {states.map( (stateName,idx) => 
           <div
             className="dropdown-list__state" 
             key={idx} 
-            data-state={state}
+            data-state={stateName}
             onClick={handleStateSelection}
             >
-            {state}
+            {stateName}
           </div> 
         
         )}

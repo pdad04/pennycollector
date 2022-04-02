@@ -2,6 +2,7 @@
   text-align: center;
   cursor: default;
   border: 1px solid black;
+  min-width: 6.8rem;
   padding: 0.25rem;
   overflow: scroll;
 }
@@ -13,6 +14,7 @@
   margin-top: 2rem;
 }
 .dropdown-list-hide {
+  display: none;
   opacity: 0;
 }
 
@@ -25,7 +27,6 @@
   background-color: hsl(0, 50%, 98%);
   overflow: scroll;
   opacity: 1;
-  transition: opacity 0.2s ease;
   z-index: 100;
 }
 
