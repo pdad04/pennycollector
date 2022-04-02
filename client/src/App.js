@@ -7,7 +7,8 @@ function App() {
   const [stateName, setStateName] = useState(null);
 
   const updateStateName = (e) => {
-    setStateName(e.target.dataset.state);
+    console.log(e.target.value);
+    setStateName(e.target.value);
   }
 
   return (
