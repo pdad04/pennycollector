@@ -3,12 +3,6 @@ import StateDropdown from './StateDropdown';
 import pennyMachineImg from "../images/Penny-Press-Machine.png";
 
 const Home = ({stateName,updateStateName}) => {
-  // const [stateName, setStateName] = useState(null);
-
-  // const updateStateName = (e) => {
-  //   setStateName(e.target.dataset.state);
-  // }
-
   return (
     <>
       <header id="home-header">

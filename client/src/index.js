@@ -1,12 +1,26 @@
 import React from 'react';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import StateLocationList from './components/StateLocationList';
+import ErrorPage from './components/ErrorPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="main-container">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/:state" element={<StateLocationList />} />
+          <Route
+            path="*"
+            element={<ErrorPage /> }
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
