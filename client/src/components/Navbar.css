@@ -1,0 +1,15 @@
+.location-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  margin-bottom: 1.5em;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+svg {
+  height: 1.5em;
+  width: 1.5em;
+}

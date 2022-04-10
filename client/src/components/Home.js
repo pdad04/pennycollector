@@ -10,10 +10,7 @@ const Home = ({stateName,updateStateName}) => {
         <img src={pennyMachineImg} alt="" id="main-header-image" />
       </header>
       <section className="home-content">
-        <StateDropdown
-          updateStateName={updateStateName}
-          state={stateName}
-        />
+        <StateDropdown />
         <article id="about">
           <p>It is generally accepted that the elongated pennies were first made during the 1892-1893 The World’s Columbian Exposition. The world’s fair was held in Chicago, Illinois to commemorate the 400th anniversary of Columbus’s discovery of the New World.</p>
   
