@@ -1,0 +1,43 @@
+.form-add-location {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  position: relative;
+  max-width: 400px;
+  height: 1.5rem;
+  font-size: 1rem;
+  margin: 0.25em 0 0.75em;
+}
+
+.form-textarea {
+  max-width: 400px;
+  font-size: 1rem;
+  margin: 0.25em 0 0.75em;
+}
+
+.button {
+  background-color: #ad6f69;
+  width: max-content;
+  padding: 0.75em;
+  border-radius: 5px;
+  cursor: default;
+  transition: all 0.25s ease-in;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+  margin: -10px 0 1rem;
+  font-size: 0.7rem;
+}

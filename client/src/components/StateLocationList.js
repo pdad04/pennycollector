@@ -9,20 +9,19 @@ const StateLocationList = (props) => {
   let params = useParams();
   const states = ["Alabama", "Alaska", "Arizona", "Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennesee","Texas","Utah","Vermont","Virginia","Washington DC","Washington","West Virginia","Wisconsin","Wyoming"];
   const URI = `/api/locations/${params.state}`;
-  // const {populateLocations} = props;
+
   const [locations, setLocations] = useState([]);
   
 
 
   useEffect(() => {
     getData();
-  },[]);
+  });
 
   const getData = async () => {
     try {
       const result = await axios.get(URI);
       setLocations(result.data);
-      // populateLocations(result.data);
     } catch (error) {
       
     }

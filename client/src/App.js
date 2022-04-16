@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./components/Home"
 import StateLocationList from "./components/StateLocationList";
 import ErrorPage from "./components/ErrorPage";
+import AddLocation from "./components/AddLocation";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:state" element={<StateLocationList />} />
+          <Route path="/addLocation" element={<AddLocation />} />
           <Route
             path="*"
             element={<ErrorPage /> }

@@ -8,12 +8,13 @@ const StateDropdown = ({updateStateName}) => {
   const navigate = useNavigate();
 
   const handleStateSelection = (e) => {
+    console.log(e.target.value)
     navigate(`/${e.target.value}`);
   }
 
   return (
     <div className="custom-select">
-      <select name="" id="" onChange={handleStateSelection}>
+      <select className="custom-select-view" name="" id="" onChange={handleStateSelection}>
         <option value="" disabled selected hidden>Select State</option>
         {states.map( (stateName, idx) => 
           <option 
