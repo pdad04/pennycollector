@@ -1,20 +1,87 @@
-.card {
-  max-width: 400px;
-  background-color: #ad6f69;
-  margin-bottom: 1.5em;
-  padding: 1em;
-  border-radius: 0.5rem;
-  box-shadow: 0px 13px 15px -1px rgba(0, 0, 0, 0.45);
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.card__entry {
-  margin-bottom: 0.25em;
-}
-
-.label {
+th {
+  background: #b87333;
+  color: white;
   font-weight: bold;
 }
 
-.content-container {
-  margin: 1em;
+td,
+th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+/* tbody > tr:nth-child(even) {
+  background-color: hsla(29, 57%, 46%, 1);
+  color: white;
+} */
+
+@media only screen and (max-width: 760px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid hsla(29, 57%, 46%, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid hsla(29, 57%, 46%, 0.25);
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /*
+	Label the data
+	*/
+  td:nth-of-type(1):before {
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "Address";
+  }
+  td:nth-of-type(3):before {
+    content: "City";
+  }
+  td:nth-of-type(4):before {
+    content: "Last Updated";
+  }
+  td:nth-of-type(5):before {
+    content: "Design";
+  }
+  td:nth-of-type(6):before {
+    content: "Notes";
+  }
 }
