@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
 import ErrorPage from "./ErrorPage";
-import Navbar from "./Navbar";
 import Pagination from './Pagination';
 import "./StateLocationList.css";
 
@@ -13,13 +12,19 @@ const StateLocationList = (props) => {
   const entriesPerPage = 20;
 
   const [locations, setLocations] = useState([]);
-  const [isFiltered, setIsFiltered] = useState(false);
   const [paginationStart, setPaginationStart] = useState(0);
+  const [searchText, setSearchText] = useState(null);
+  const [isFiltered, setIsFiltered] = useState(false);
+  
+  let filteredLocationsLength;
 
   
 
 
   useEffect(() => {
+    if(states.includes(params.state)){
+      props.updateName(params.state)
+    }
 
     const getData = async () => {
       try {
@@ -31,18 +36,31 @@ const StateLocationList = (props) => {
     }
     getData();
     window.scrollTo(0,0);
-  },[params.state, paginationStart]);
+
+    // return () => {props.updateName("")}
+
+  },[params.state, paginationStart,searchText,isFiltered]);
 
 
-  const getLocationsToShow = () => {
-    if(false){
-      return locations.filter(location => location.city === "Anaheim");
+  const getLocationsToShow = (city) => {
+    locations.sort((a,b) => a.city > b.city);
+    
+    if(city){
+      const filteredLocations = locations.filter(location => location.city.toLowerCase().startsWith(city.toLowerCase()));
+      filteredLocationsLength = filteredLocations.length;
+      return filteredLocations;
     }
-    return locations.sort((a,b) => a.city > b.city);
+    return locations;
   }
 
   const incrementPagination = (pageNumber) => {
    setPaginationStart(pageNumber * 20 - entriesPerPage)
+  }
+
+  const onChange = (e) => {
+    if(e.target.value.length !== 0 && !isFiltered) setIsFiltered(true)
+    if(e.target.value.length === 0 && isFiltered) setIsFiltered(false);
+    setSearchText(e.target.value);
   }
 
   return (
@@ -51,10 +69,10 @@ const StateLocationList = (props) => {
         <ErrorPage /> 
       : 
         <div>
-            <Navbar
-              state={params.state}
-            />
           <div className="content-container">
+            <div className="filter">
+              <input type="text" className="filter-text" placeholder="Enter city name to filter" onChange={onChange}/>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -67,20 +85,27 @@ const StateLocationList = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {getLocationsToShow().slice(paginationStart,paginationStart + entriesPerPage).map(location => { return(
-                  <tr>
-                    <td>{location.name || 'Not Provided'}</td>
-                    <td>{location.address}</td>
-                    <td>{location.city || 'Not Provided'}</td>
-                    <td>{location.lastUpdated}</td>
-                    <td>{location.design}</td>
-                    <td>{location.notes || 'N/A'}</td>
-                  </tr>
-                )})}
+                {getLocationsToShow(searchText)
+                  .slice(paginationStart,paginationStart + entriesPerPage)
+                  .map(location => 
+                    { 
+                      return(
+                        <tr key={location._id}>
+                          <td>{location.name || 'Not Provided'}</td>
+                          <td>{location.address}</td>
+                          <td>{location.city || 'Not Provided'}</td>
+                          <td>{location.lastUpdated}</td>
+                          <td>{location.design}</td>
+                          <td>{location.notes || 'N/A'}</td>
+                        </tr>
+                      )
+                    }
+                  )
+                }
               </tbody>
             </table>
             <Pagination
-              totalItems={locations.length}
+              totalItems={isFiltered ? filteredLocationsLength : locations.length }
               incrementPagination={incrementPagination}
             />
           </div>

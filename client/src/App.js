@@ -5,23 +5,24 @@ import Home from "./components/Home"
 import StateLocationList from "./components/StateLocationList";
 import ErrorPage from "./components/ErrorPage";
 import AddLocation from "./components/AddLocation";
+import Navbar from "./components/Navbar";
 
 
 function App() {
-  // const [stateData, setStatedata] = useState([]);
-
-  // const populateLocations = (data) => {
-  //   setStatedata(data)
-  // }
-
+  const [stateName, setStateName] = useState("");
+  
+  const updateStateName = (state) => {
+    setStateName(state);
+  }
 
   return (
     <div className="main-container">
       <BrowserRouter>
+      <Navbar state={stateName} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:state" element={<StateLocationList />} />
-          <Route path="/addLocation" element={<AddLocation />} />
+          <Route path="/:state" element={<StateLocationList updateName={updateStateName} />} />
+          <Route path="/addLocation" element={<AddLocation currentState={stateName}/>} />
           <Route
             path="*"
             element={<ErrorPage /> }

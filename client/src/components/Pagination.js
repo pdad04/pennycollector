@@ -32,7 +32,7 @@ const Pagination = ({totalItems, incrementPagination}) => {
   }
 
   for(let i = 1; i <= Math.ceil(totalItems/20); i++){
-    items.push(<li className="pagination__item">{i}</li> )
+    items.push(<li className="pagination__item" key={i}>{i}</li> )
   }
 
   return (

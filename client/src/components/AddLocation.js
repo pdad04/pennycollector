@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import "./AddLocation.css";
 
-const AddLocation = () => {
+const AddLocation = ({currentState}) => {
   const states = ["Alabama", "Alaska", "Arizona", "Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennesee","Texas","Utah","Vermont","Virginia","Washington DC","Washington","West Virginia","Wisconsin","Wyoming"];
 
   const date = {
@@ -43,6 +43,8 @@ const AddLocation = () => {
 
   }
 
+  console.log(currentState);
+
   return (
     <div className="content-container">
       <form className="form-add-location">
@@ -56,9 +58,9 @@ const AddLocation = () => {
         <input className="form-input" type="text" value={location.city} name="city" onChange={handleChange} />
         {location.city === "" && didSubmit ? <div className="required">Entry Required</div> : <></>}
         <label className="form-label">State</label>
-        <select className="form-input" name="state" onChange={handleChange} >
-          <option selected disabled>Select State</option>
-          {states.map(state => <option key={state}>{state}</option>)}
+        <select className="form-input" name="state" value={currentState} onChange={handleChange} >
+          <option>Select State</option>
+          {states.map(state => <option key={state} value={state}>{state}</option>)}
         </select>
         {location.state === "" && didSubmit ? <div className="required">Entry Required</div> : <></>}
         <label className="form-label">Website</label>

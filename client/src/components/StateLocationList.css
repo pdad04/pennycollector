@@ -1,3 +1,17 @@
+.filter-text {
+  height: 2rem;
+  width: 100%;
+  border: 1px solid #b87333;
+  border-radius: 5px;
+  margin: 0 auto 2em;
+  padding: 0.75em;
+}
+
+.filter-text:focus {
+  outline: none;
+  border: 2px solid #b87333;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
