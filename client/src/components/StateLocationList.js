@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Outlet } from 'react-router-dom'
 import axios from "axios";
 import ErrorPage from "./ErrorPage";
 import Pagination from './Pagination';
@@ -36,8 +36,6 @@ const StateLocationList = (props) => {
     }
     getData();
     window.scrollTo(0,0);
-
-    // return () => {props.updateName("")}
 
   },[params.state, paginationStart,searchText,isFiltered]);
 
@@ -109,6 +107,7 @@ const StateLocationList = (props) => {
               incrementPagination={incrementPagination}
             />
           </div>
+          <Outlet />
         </div>
   )
 }

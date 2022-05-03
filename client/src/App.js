@@ -6,6 +6,7 @@ import StateLocationList from "./components/StateLocationList";
 import ErrorPage from "./components/ErrorPage";
 import AddLocation from "./components/AddLocation";
 import Navbar from "./components/Navbar";
+import StateLocationMap from "./components/StateLocationMap";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/:state" element={<StateLocationList updateName={updateStateName} />} />
           <Route path="/addLocation" element={<AddLocation currentState={stateName}/>} />
+          <Route path="/map" element={<StateLocationMap />} />
           <Route
             path="*"
             element={<ErrorPage /> }
