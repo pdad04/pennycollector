@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import {IoMapOutline, IoAddSharp, IoListOutline} from "react-icons/io5";
 import "./Navbar.css";
 
-const Navbar = ({state}) => {
+const Navbar = ({state, shouldShowMap,showMap}) => {
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -14,9 +14,10 @@ const Navbar = ({state}) => {
     return state
   }
 
+
   return (
     <nav className="location-nav">
-      {location.pathname === "/map" ? <div className="nav-icon" onClick={() => navigate(-1)}><IoListOutline /></div> : <div className="nav-icon" onClick={() => navigate("/map")}><IoMapOutline /></div>}
+      {showMap ? <div className="nav-icon" onClick={shouldShowMap}><IoListOutline /></div> : <div className="nav-icon" onClick={shouldShowMap}><IoMapOutline /></div>}
       <div>{getNavText()}</div>
       <div className="nav-icon" onClick={() => navigate("/addLocation")}><IoAddSharp /> </div>
     </nav>
