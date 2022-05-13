@@ -8,7 +8,6 @@ const StateDropdown = ({updateStateName}) => {
   const navigate = useNavigate();
 
   const handleStateSelection = (e) => {
-    console.log(e.target.value)
     navigate(`/${e.target.value}`);
   }
 
