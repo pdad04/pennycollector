@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage";
 import Pagination from './Pagination';
 import StateLocationList from './StateLocationList';
 import StateLocationMap from './StateLocationMap';
+import Loading from "./Loading";
 
 const StateLocationView = (props) => {
   const {updateName, showMap, currentLocation} = props;
@@ -36,6 +37,10 @@ const StateLocationView = (props) => {
 
 
   const getComponentToShow = () => {
+    if(!locations.length){
+      return <Loading />
+    }
+
     if(props.showMap){
       return <StateLocationMap locations={locations} currentLocation={currentLocation} />
     }

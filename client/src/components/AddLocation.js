@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./AddLocation.css";
 
-const AddLocation = ({currentState}) => {
+const AddLocation = ({currentState, triggerAlert}) => {
   const states = ["Alabama", "Alaska", "Arizona", "Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennesee","Texas","Utah","Vermont","Virginia","Washington DC","Washington","West Virginia","Wisconsin","Wyoming"];
 
   const date = {
@@ -23,9 +24,12 @@ const AddLocation = ({currentState}) => {
   });
 
   const [didSubmit, setDidSubmit] = useState(false);
+  const [selectedState, setSelecteState] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+    if(name === "state") setSelecteState(value);
     setLocation({...location, [name]:value})
   }
 
@@ -36,7 +40,8 @@ const AddLocation = ({currentState}) => {
 
     try {
       const result = await axios.post("/api/locations/create", location);
-      
+      triggerAlert("success", result.data.msg)
+      navigate(`/${currentState || selectedState}`)
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +63,7 @@ const AddLocation = ({currentState}) => {
         <input className="form-input" type="text" value={location.city} name="city" onChange={handleChange} />
         {location.city === "" && didSubmit ? <div className="required">Entry Required</div> : <></>}
         <label className="form-label">State</label>
-        <select className="form-input" name="state" value={currentState} onChange={handleChange} >
+        <select className="form-input" name="state" value={currentState || selectedState} onChange={handleChange} >
           <option>Select State</option>
           {states.map(state => <option key={state} value={state}>{state}</option>)}
         </select>
@@ -71,7 +76,7 @@ const AddLocation = ({currentState}) => {
         <input className="form-input" type="date" name="lastUpdated" value={location.lastUpdated} onChange={handleChange}  />
         <label className="form-label">Notes</label>
         <textarea className="form-textarea" rows="4" type="text" name="notes" onChange={handleChange}></textarea>
-        <div className="form-input button" onClick={handleSubmit}>Submit</div>
+        <div className="button" onClick={handleSubmit}>Submit</div>
       </form>
     </div>
   )

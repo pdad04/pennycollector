@@ -6,11 +6,16 @@ import StateLocationView from "./components/StateLocationView";
 import ErrorPage from "./components/ErrorPage";
 import AddLocation from "./components/AddLocation";
 import Navbar from "./components/Navbar";
+import AlertBanner from "./components/AlertBanner";
 
 function App() {
   const [stateName, setStateName] = useState("");
   const [showMap, setShowMap] = useState(false);
   const [currentLocation, setCurrentLocation] = useState([])
+  const [alert, setAlert] = useState({
+    type: null,
+    message: null
+  });
   
   const updateStateName = (state) => {
     setStateName(state);
@@ -26,7 +31,35 @@ function App() {
   }
 
   const locationError = () => {
-    console.log('error');
+    setAlert({
+      type: "warning",
+      message: "For the best experiece please allow location access."
+    });
+
+    setTimeout(()=> { setAlert({
+      type: null,
+      message: null
+    })}, 5000);
+  }
+
+  const closeAlert = () => {
+    console.log('clicked');
+    setAlert({
+      type: null,
+      message: null
+    })
+  }
+
+  const triggerAlert = (type, message) => {
+    setAlert({
+      type: type,
+      message: message
+    });
+
+    setTimeout(()=> { setAlert({
+      type: null,
+      message: null
+    })}, 5000);
   }
 
   useEffect(() => {
@@ -41,6 +74,10 @@ function App() {
         shouldShowMap={shouldShowMap}
         showMap={showMap}
       />
+      <AlertBanner
+        alert={alert}
+        close={closeAlert}
+      />
         <Routes>
           <Route path="/" 
             element={<Home />} 
@@ -52,7 +89,7 @@ function App() {
             currentLocation={currentLocation} />} 
           />
           <Route path="/addLocation" 
-            element={<AddLocation currentState={stateName}/>} 
+            element={<AddLocation currentState={stateName} triggerAlert={triggerAlert}/>} 
           />
           <Route
             path="*"

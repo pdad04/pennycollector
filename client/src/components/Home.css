@@ -3,3 +3,18 @@
   display: flex;
   justify-content: center;
 }
+
+#home-header {
+  font-family: "Montserrat", sans-serif;
+}
+
+#home-header > h1 {
+  text-align: center;
+  font-weight: 900;
+  color: #b87333;
+}
+
+#about {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}

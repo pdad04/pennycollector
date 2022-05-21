@@ -22,8 +22,8 @@ function StateLocationMap({locations, currentLocation}) {
     if(typeof coords[0] === "number" && typeof coords[1] === "number" ) {
       return <Marker position={[coords[1],coords[0]]} icon={icon}>
         <Popup>
-          <p>{entry.name}</p>
-          <p>{entry.address}</p>
+          <p><span style={{fontWeight:600}}>Location: </span>{entry.name}</p>
+          <p><span style={{fontWeight:600}}>Address: </span> {entry.address}</p>
         </Popup>
       </Marker>
     }

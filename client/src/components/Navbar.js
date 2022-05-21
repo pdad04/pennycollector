@@ -19,7 +19,7 @@ const Navbar = ({state, shouldShowMap,showMap}) => {
       return (
         <nav className="location-nav">
           {showMap ? <div className="nav-icon" onClick={shouldShowMap}><IoListOutline /></div> : <div className="nav-icon" onClick={shouldShowMap}><IoMapOutline /></div>}
-          <div>{getNavText()}</div>
+          <div className="nav-title">{getNavText()}</div>
           <div className="nav-icon" onClick={() => navigate("/addLocation")}><IoAddSharp /> </div>
         </nav>
       ) 
@@ -28,7 +28,7 @@ const Navbar = ({state, shouldShowMap,showMap}) => {
     return (
       <nav className="location-nav">
         <div></div>
-        <div>{getNavText()}</div>
+        <div className="nav-title">{getNavText()}</div>
         <div className="nav-icon" onClick={() => navigate("/addLocation")}><IoAddSharp /> </div>
       </nav>
     )

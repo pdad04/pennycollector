@@ -8,6 +8,7 @@
 
 .pagination__text {
   align-self: center;
+  font-weight: 600;
 }
 
 .pagination__container {
@@ -43,6 +44,7 @@
   position: absolute;
   top: 3.5rem;
   height: 8rem;
+  width: 3.5rem;
   margin: -1px;
   padding: 0;
   display: flex;

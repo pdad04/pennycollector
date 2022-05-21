@@ -1,0 +1,40 @@
+.alert {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  margin-bottom: -1rem;
+  transform: translateY(-10rem);
+  transition: all 0.5s linear;
+}
+
+.error {
+  transform: translateY(0);
+  background-color: hsla(0, 100%, 50%, 0.45);
+  transition: all 0.75s linear;
+}
+
+.success {
+  transform: translateY(0);
+  background-color: hsl(120, 100%, 25%, 0.45);
+  transition: all 0.75s linear;
+}
+
+.warning {
+  transform: translateY(0);
+  background-color: hsla(60, 100%, 50%, 0.5);
+  transition: all 0.75s linear;
+}
+
+.alert > h3 {
+  font-size: 0.75rem;
+  width: 100%;
+  padding: 0.75em;
+  margin: 0;
+  /* line-height: 1.5; */
+}
+
+.alert > div {
+  align-self: center;
+}
