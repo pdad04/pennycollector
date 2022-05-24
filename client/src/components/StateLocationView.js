@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, Fragment} from 'react'
 import { useParams, useLocation, Outlet } from 'react-router-dom'
 import axios from "axios";
 import ErrorPage from "./ErrorPage";
@@ -52,7 +52,7 @@ const StateLocationView = (props) => {
       ? 
         <ErrorPage /> 
       : 
-        <div>
+        <div className="content-container">
           {getComponentToShow()}
         </div>
   )

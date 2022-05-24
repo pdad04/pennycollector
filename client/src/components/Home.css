@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.home-content {
+  margin: 0 2rem;
+}
+
 #home-header {
   font-family: "Montserrat", sans-serif;
 }
@@ -12,6 +16,13 @@
   text-align: center;
   font-weight: 900;
   color: #b87333;
+}
+
+#main-header-image {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 #about {

@@ -16,7 +16,7 @@ const AddLocation = ({currentState, triggerAlert}) => {
     name: "",
     address: "",
     city: "",
-    state: "",
+    state: currentState || "",
     website: "",
     design: "",
     lastUpdated: `${date.year}-${date.month}-${date.day}`,
@@ -34,10 +34,12 @@ const AddLocation = ({currentState, triggerAlert}) => {
   }
 
   const handleSubmit = async (e) => {
+    console.log(currentState, selectedState);
     e.preventDefault();
     setDidSubmit(true);
     if(location.name === "" || location.address === "" || location.city === "" || location.state === "") return;
 
+    console.log('submited', location);
     try {
       const result = await axios.post("/api/locations/create", location);
       triggerAlert("success", result.data.msg)
@@ -47,8 +49,6 @@ const AddLocation = ({currentState, triggerAlert}) => {
     }
 
   }
-
-  console.log(currentState);
 
   return (
     <div className="content-container">

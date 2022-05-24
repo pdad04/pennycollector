@@ -31,7 +31,7 @@ function StateLocationListTwo({locations}) {
   }
 
   return (
-    <div className="content-container">
+    <div className="list-data">
             <div className="filter">
               <input type="text" className="filter-text" placeholder="Enter city name to filter" onChange={onChange}/>
             </div>

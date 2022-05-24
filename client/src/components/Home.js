@@ -8,7 +8,9 @@ const Home = ({stateName,updateStateName}) => {
     <div className="content-container">
       <header id="home-header">
         <h1>Souvenier Penny Finder</h1>
-        <img src={pennyMachineImg} alt="" id="main-header-image" />
+        <div>
+          <img src={pennyMachineImg} alt="" id="main-header-image" />
+        </div>
       </header>
       <section className="home-content">
         <div className="custom-select">

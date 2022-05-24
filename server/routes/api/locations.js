@@ -22,7 +22,7 @@ router.get("/:state", async(req, res) => {
 // @desc    create a new place in the given state and add to DB
 // @access  Public
 router.post("/create", async(req, res) => {
-  const {name, address,city,state,zip,design,lastUpdate,notes} = req.body;
+  const {name, address,city,state,zip,design,lastUpdated,notes} = req.body;
   const addrssQueryString = new URLSearchParams(`name=${address} ${city} ${state}`);
   const createLocation = {
     name: name,
@@ -34,10 +34,10 @@ router.post("/create", async(req, res) => {
     city: city,
     state: state,
     design: design,
-    lastUpdated:lastUpdate,
+    lastUpdated:lastUpdated,
     notes: notes
   }
- 
+
   // Geocode address
   try {
     const result = await axios.get(`${process.env.GEOAPIURL}${addrssQueryString}&format=json&${process.env.GEOAPIKEY}`);

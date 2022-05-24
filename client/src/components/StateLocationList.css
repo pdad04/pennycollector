@@ -12,6 +12,10 @@
   border: 2px solid #b87333;
 }
 
+.list-data {
+  margin: 0 2rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
