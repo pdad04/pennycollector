@@ -44,17 +44,11 @@ const StateLocationView = (props) => {
     if(props.showMap){
       return <StateLocationMap locations={locations} currentLocation={currentLocation} />
     }
-    return <StateLocationList locations={locations} />
+    return <div className="content-container"><StateLocationList locations={locations} /></div>
   }
 
   return (
-    !states.includes(params.state) 
-      ? 
-        <ErrorPage /> 
-      : 
-        <div className="content-container">
-          {getComponentToShow()}
-        </div>
+    !states.includes(params.state) ? <ErrorPage /> : getComponentToShow()
   )
 }
 

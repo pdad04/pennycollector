@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import dayjs from "dayjs";
 import Pagination from './Pagination';
 import "./StateLocationList.css";
 
@@ -54,11 +55,11 @@ function StateLocationListTwo({locations}) {
                       return(
                         <tr key={location._id}>
                           <td>{location.name || 'Not Provided'}</td>
-                          <td>{location.address}</td>
+                          <td>{location.address || "Not Provided"}</td>
                           <td>{location.city || 'Not Provided'}</td>
-                          <td>{location.lastUpdated}</td>
-                          <td>{location.design}</td>
-                          <td>{location.notes || 'N/A'}</td>
+                          <td>{dayjs(location.lastUpdated).format() === "Invalid Date" ? "Not Provided" :  dayjs(location.lastUpdated).format("M/DD/YY")}</td>
+                          <td>{location.design || "Not Provided"}</td>
+                          <td>{location.notes || "Not Provided"}</td>
                         </tr>
                       )
                     }

@@ -36,7 +36,7 @@ function StateLocationMap({locations, currentLocation}) {
   }
 
   return (
-    <MapContainer id="map" center={currentLocation.length ? currentLocation : defaultLocation} zoom={currentLocation.length ? 10 : 3} scrollWheelZoom={false}>
+    <MapContainer id="map" center={currentLocation.length ? currentLocation : defaultLocation} zoom={currentLocation.length ? 15 : 3} scrollWheelZoom={false}>
       <Marker position={currentLocation.length ? currentLocation : defaultLocation} icon={userLocation}>
         <Tooltip >You are here!</Tooltip>
       </Marker>
