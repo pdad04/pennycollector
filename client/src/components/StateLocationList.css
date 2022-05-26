@@ -18,6 +18,10 @@
   padding-bottom: 5rem;
 }
 
+.drop {
+  margin-bottom: 2rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

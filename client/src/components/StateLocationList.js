@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import dayjs from "dayjs";
 import Pagination from './Pagination';
 import "./StateLocationList.css";
+import StateDropdown from './StateDropdown';
 
 function StateLocationListTwo({locations}) {
   const [paginationStart, setPaginationStart] = useState(0);
@@ -35,6 +36,9 @@ function StateLocationListTwo({locations}) {
     <div className="list-data">
             <div className="filter">
               <input type="text" className="filter-text" placeholder="Enter city name to filter" onChange={onChange}/>
+            </div>
+            <div className="drop">
+              <StateDropdown />
             </div>
             <table>
               <thead>
