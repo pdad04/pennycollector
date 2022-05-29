@@ -7,7 +7,7 @@ const Home = ({stateName,updateStateName}) => {
   return (
     <div className="content-container">
       <header id="home-header">
-        <h1>Souvenier Penny Finder</h1>
+        <h1>Souvenier Penny Locations</h1>
         <div>
           <img src={pennyMachineImg} alt="" id="main-header-image" />
         </div>
@@ -17,9 +17,9 @@ const Home = ({stateName,updateStateName}) => {
           <StateDropdown />
         </div>
         <article id="about">
-          <p>It is generally accepted that the elongated pennies were first made during the 1892-1893 The World’s Columbian Exposition. The world’s fair was held in Chicago, Illinois to commemorate the 400th anniversary of Columbus’s discovery of the New World.</p>
+          <p>It is generally accepted that the first elongated coins in the United States began at the World’s Columbian Exposition held in Chicago, Illinois in 1892-1893.</p>
   
-          <p>Between May 1 and October 30, twenty million attendees would make the pilgrimage from their home to visit the city of Chicago. The exposition highlighted many historical and contemporary accomplishments in the industries, the arts, and the sciences. The fairgrounds were dubbed “The White City” because of the Renaissance-style buildings produced in white plaster, Esteemed architects from all over the United States participated in the planning of the fair described as “the greatest meeting of artists since the fifteenth century.”</p>
+          <p>Here you will find crowd-sourced locations of souvenier penny machines across the United States. From the dropdown above, select the state you wish to view to see the results as a list or on a map (allow location access for best experience). If you discover a location that is not yet added you may add the location yourself for everyone else to find later.  </p>
         </article>
       </section>
     </div>

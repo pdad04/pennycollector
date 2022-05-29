@@ -37,7 +37,7 @@ function StateLocationMap({locations, currentLocation}) {
   return (
     <MapContainer id="map" center={currentLocation.length ? currentLocation : defaultLocation} zoom={currentLocation.length ? 15 : 3} scrollWheelZoom={false}>
       <Marker position={currentLocation.length ? currentLocation : defaultLocation} icon={userLocation}>
-        <Tooltip >You are here!</Tooltip>
+        {currentLocation.length ? <Tooltip >You are here!</Tooltip> : <Tooltip>Default Location</Tooltip>}
       </Marker>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
