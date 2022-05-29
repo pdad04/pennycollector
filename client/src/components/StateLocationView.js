@@ -1,8 +1,7 @@
-import React, {useEffect, useState, Fragment} from 'react'
-import { useParams, useLocation, Outlet } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom'
 import axios from "axios";
 import ErrorPage from "./ErrorPage";
-import Pagination from './Pagination';
 import StateLocationList from './StateLocationList';
 import StateLocationMap from './StateLocationMap';
 import Loading from "./Loading";
@@ -14,20 +13,25 @@ const StateLocationView = (props) => {
   const URI = `/api/locations/${params.state}`;
 
   const [locations, setLocations] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorThrown, setErrorThrown] = useState(false);
   
-  const pagePath = useLocation();
-
   useEffect(() => {
     if(states.includes(params.state)){
-      props.updateName(params.state)
+      updateName(params.state)
     }
 
     const getData = async () => {
+      setIsLoading(true)
+      setErrorThrown(false);
       try {
         const result = await axios.get(URI);
         setLocations(result.data);
+        setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        props.triggerAlert('error',error.response.data.msg);
+        setIsLoading(false);
+        setErrorThrown(true);
       }
     }
     getData();
@@ -37,13 +41,12 @@ const StateLocationView = (props) => {
 
 
   const getComponentToShow = () => {
-    if(!locations.length){
-      return <Loading />
-    }
+    if(isLoading) return <Loading />
 
-    if(props.showMap){
-      return <StateLocationMap locations={locations} currentLocation={currentLocation} />
-    }
+    if(errorThrown) return <ErrorPage />
+
+    if(showMap) return <StateLocationMap locations={locations} currentLocation={currentLocation} />
+
     return <div className="content-container"><StateLocationList locations={locations} /></div>
   }
 

@@ -14,7 +14,7 @@ router.get("/:state", async(req, res) => {
     const places = await locations.toArray();
     res.status(200).json(places);
   } catch (error) {
-    res.status(500).send("Server Error");
+    res.status(500).json({msg:"Oops! There's a problem with the server. Please try again!"});
   }
 });
 
@@ -48,7 +48,7 @@ router.post("/create", async(req, res) => {
     }  
   } catch (error) {
     console.error(error);
-    res.status(500).json({status: 500, msg:"There was an error retreiving location"})
+    res.status(500).json({status: 500, msg:"There was an error saving the location. Please try again"})
   }
 
   // Add new location to DB.
@@ -58,7 +58,7 @@ router.post("/create", async(req, res) => {
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({status: 500, msg:'There was an error saving location'});
+    res.status(500).json({status: 500, msg:"There was an error saving location. Please try again"});
     
   }
 })

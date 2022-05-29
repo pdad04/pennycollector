@@ -14,7 +14,7 @@ const StateDropdown = ({updateStateName}) => {
   return (
     <div className="custom-select">
       <select className="custom-select-view" name="" id="" onChange={handleStateSelection}>
-        <option value="" disabled selected hidden>Select State</option>
+        <option value="Select State">Select State</option>
         {states.map( (stateName, idx) => 
           <option 
             value={stateName}

@@ -2,7 +2,6 @@ import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Tooltip} from 'react-leaflet';
 import L from "leaflet";
 import "./StateLocationMap.css";
-import mapMarker from "../images/map-marker.png"
 
 function StateLocationMap({locations, currentLocation}) {
 
@@ -20,7 +19,7 @@ function StateLocationMap({locations, currentLocation}) {
     const coords = entry.location.coordinates;
 
     if(typeof coords[0] === "number" && typeof coords[1] === "number" ) {
-      return <Marker position={[coords[1],coords[0]]} icon={icon}>
+      return <Marker position={[coords[1],coords[0]]} icon={icon} key={entry._id}>
         <Popup>
           <p><span style={{fontWeight:600}}>Location: </span>{entry.name}</p>
           <p><span style={{fontWeight:600}}>Address: </span> {entry.address}</p>

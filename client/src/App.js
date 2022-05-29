@@ -43,7 +43,6 @@ function App() {
   }
 
   const closeAlert = () => {
-    console.log('clicked');
     setAlert({
       type: null,
       message: null
@@ -59,7 +58,7 @@ function App() {
     setTimeout(()=> { setAlert({
       type: null,
       message: null
-    })}, 5000);
+    })}, type === "error" ? 15000 : 5000);
   }
 
   useEffect(() => {
@@ -86,7 +85,8 @@ function App() {
             element={<StateLocationView
             updateName={updateStateName} 
             showMap={showMap}
-            currentLocation={currentLocation} />} 
+            currentLocation={currentLocation}
+            triggerAlert={triggerAlert} />} 
           />
           <Route path="/addLocation" 
             element={<AddLocation currentState={stateName} triggerAlert={triggerAlert}/>} 

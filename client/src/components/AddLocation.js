@@ -34,18 +34,16 @@ const AddLocation = ({currentState, triggerAlert}) => {
   }
 
   const handleSubmit = async (e) => {
-    console.log(currentState, selectedState);
     e.preventDefault();
     setDidSubmit(true);
     if(location.name === "" || location.address === "" || location.city === "" || location.state === "") return;
 
-    console.log('submited', location);
     try {
       const result = await axios.post("/api/locations/create", location);
       triggerAlert("success", result.data.msg)
       navigate(`/${currentState || selectedState}`)
     } catch (error) {
-      console.log(error);
+      triggerAlert("error", error.response.data.msg);
     }
 
   }

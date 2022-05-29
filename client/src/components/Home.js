@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react'
+import React from 'react'
 import StateDropdown from './StateDropdown';
 import pennyMachineImg from "../images/Penny-Press-Machine.png";
 import "./Home.css";
