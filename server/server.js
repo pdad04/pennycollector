@@ -12,9 +12,9 @@ app.get("/", (req, res) => res.send("API RUNNING"));
 app.use("/api/locations", require("./routes/api/locations"));
 
 const path = require("path");
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 db.initDb((error, db) => {
