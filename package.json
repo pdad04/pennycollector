@@ -1,4 +1,4 @@
-{ 
+{
   "scripts": {
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
@@ -6,5 +6,8 @@
     "server": "cd server nodemon server.js",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+  },
+  "dependencies": {
+    "concurrently": "^7.2.1"
   }
 }
