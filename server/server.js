@@ -7,8 +7,6 @@ const app = express();
 
 app.use(express.json({extended: false}));
 
-app.get("/", (req, res) => res.send("API RUNNING"));
-
 app.use("/api/locations", require("./routes/api/locations"));
 
 const path = require("path");
