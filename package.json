@@ -5,7 +5,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ./client && npm run build --prefix ./client",
     "server": "cd server && node server.js",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "start": "npm run server"
+    "start": "npm run server --prefix server"
   },
   "dependencies": {
     "concurrently": "^7.2.1"
